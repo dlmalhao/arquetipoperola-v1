@@ -13,6 +13,7 @@ export default function About() {
           <div className="description">
             <span>Acreditamos que a arquitetura vai além do betão e das linhas retas.</span>
             <span>Projetamos habitações que unem a máxima eficiência construtiva a uma identidade única, moldada para cada família</span>
+            <span>Casas robustas, feitas para durar, com 20 anos de garantia estrutural e totalmente personalizáveis.</span>
           </div>          
             <Grid container spacing={5} className="about__cards">
                 <Grid size={{ xs: 12, md: 6, xl: 4 }}>
@@ -24,13 +25,13 @@ export default function About() {
                 <Grid size={{ xs: 12, md: 6, xl: 4 }}>
                   <div className="card">
                     <h3>Prontas a Entrar</h3>
-                    <p>O nosso método de construção  permite-nos entregar 4 habitações por mês, prontas a habitar.</p>
+                    <p>O nosso método de construção permite-nos entregar 4 habitações por mês, prontas a habitar.</p>
                   </div>
                 </Grid>
                 <Grid size={{ xs: 12, md: 6, xl: 4 }}>
                   <div className="card">
                     <h3>Flexibilidade</h3>
-                    <p>Soluções flexíveis para todas as famílias, com projetos disponíveis nas tipologias de T1 a T5.</p>
+                    <p>Soluções flexíveis para todas as famílias, com projetos disponíveis nas tipologias de T1 a T5 e totalmente personalizáveis.</p>
                   </div>
                 </Grid>
             </Grid>
