@@ -4,7 +4,7 @@ import contactImage from '../../assets/contact.png';
 
 export default function Contact() {
   return (
-    <div className="contact">
+    <div id="contact" className="contact">
         <Grid container className="landing__grid">
             <Grid size={{ xs: 12, md: 1 }} />
             <Grid container spacing={5} size={{ xs: 12, md: 10 }} className="landing__content">

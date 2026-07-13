@@ -67,3 +67,63 @@
 .projects .card-component {
     background-color: var(--color-light-background);
 }
+
+.project-card__link {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.project-detail__carousel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.project-detail__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.project-detail__info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.project-detail__info .title {
+    margin:0;
+}
+
+.project-detail__type {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: rgba(17, 17, 17, 0.72);
+    display: flex;
+    justify-content: flex-start;
+}
+
+.project-detail__description {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-dark-background);
+    display: flex;
+    justify-content: flex-start;
+}
+
+.project-detail__description p {
+    text-align: start;
+}
+
+.project-detail__link {
+    display: flex;
+    justify-content: flex-start;
+    color: var(--color-dark-background);
+    text-decoration: underline;
+    font-weight: 600;
+}

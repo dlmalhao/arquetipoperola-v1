@@ -17,7 +17,7 @@ const latestmodels = allmodels.slice(-6);
 
 export default function Models() {
   return (
-    <div className="models">
+    <div id="models" className="models">
         <Grid container className="landing__grid">
             <Grid size={{ xs: 12, md: 1 }} />
             <Grid size={{ xs: 12, md: 10 }} className="landing__content">

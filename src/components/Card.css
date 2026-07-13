@@ -12,6 +12,7 @@
   padding-top: 65%;
   background-position: center;
   background-size: cover;
+  border-radius: 6px;
 }
 
 .card-component__info {

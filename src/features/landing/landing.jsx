@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 
 export default function Landing() {
   return (
-    <div className="landing">
+    <div id="home" className="landing">
       <Grid container className="landing__grid">
         <Grid size={{ xs: 12, md: 1 }} />
         <Grid size={{ xs: 12, md: 10 }} className="landing__content">

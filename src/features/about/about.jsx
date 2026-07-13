@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 
 export default function About() {
   return (
-    <div className="about">
+    <div id="about" className="about">
       <Grid container className="about__grid">
         <Grid size={{ xs: 12, md: 1 }} />
         <Grid size={{ xs: 12, md: 10 }} className="about__content">
