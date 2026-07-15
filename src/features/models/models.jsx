@@ -1,4 +1,4 @@
-import './models.css';
+﻿import './models.css';
 import Grid from '@mui/material/Grid';
 import sampleImage from '../../assets/landing-bg.png';
 import Card from '../../components/Card';
@@ -19,21 +19,21 @@ export default function Models() {
   return (
     <div id="models" className="models">
         <Grid container className="landing__grid">
-            <Grid size={{ xs: 12, md: 1 }} />
-            <Grid size={{ xs: 12, md: 10 }} className="landing__content">
+            <Grid size={{ xs: 1, md: 1 }} />
+            <Grid size={{ xs: 10, md: 10 }} className="landing__content">
                 <div className="title">
                   <h2>Os nossos modelos</h2>
                 </div>
 
                 <Grid container spacing={5} className="models__grid">
-                  {latestmodels.map((model) => (
-                    <Grid key={model.id} item size={{ xs: 12, sm: 6, md: 4 }}>
+                  {latestmodels.map((model, index) => (
+                    <Grid data-aos="fade-in" data-aos-duration="3000" data-aos-delay={index * 200} key={model.id} item size={{ xs: 12, sm: 6, md: 4 }}>
                         <Card name={model.name} type={model.type} image={model.image} />
                     </Grid>
                   ))}
                 </Grid>
             </Grid>
-            <Grid size={{ xs: 12, md: 1 }} />
+            <Grid size={{ xs: 1, md: 1 }} />
         </Grid>    
     </div>
   );

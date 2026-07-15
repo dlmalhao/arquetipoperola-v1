@@ -6,8 +6,8 @@ export default function Contact() {
   return (
     <div id="contact" className="contact">
         <Grid container className="landing__grid">
-            <Grid size={{ xs: 12, md: 1 }} />
-            <Grid container spacing={5} size={{ xs: 12, md: 10 }} className="landing__content">
+            <Grid size={{ xs: 1, md: 1 }} />
+            <Grid container spacing={5} size={{ xs: 10, md: 10 }} className="landing__content">
                 <Grid item size={{ xs: 12, sm: 6, md: 8 }}>
                     <div className="title">
                       <h2>Contacte-nos</h2>
@@ -46,7 +46,7 @@ export default function Contact() {
                     <img src={contactImage} alt="Contact" className="contact__image" />
                 </Grid>
             </Grid>
-            <Grid size={{ xs: 12, md: 1 }} />
+            <Grid size={{ xs: 1, md: 1 }} />
         </Grid>    
     </div>
   );

@@ -21,6 +21,21 @@
     line-height: 1.5;
 }
 
+.about .description .flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.highlight {
+    font-weight: bold;
+}
+
+.about .description .flex span {
+    margin-top: 5px;
+    text-align: start;
+    
+}
+
 .about .about__cards {
     margin: 50px 0;
 }

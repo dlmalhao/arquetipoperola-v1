@@ -23,6 +23,7 @@
     margin-top: 20px;
     font-size: clamp(0.9rem, 1.2vw, 1.2rem);
     line-height: 1.5;
+    text-align: start;
 }
 
 .contact .description p {
@@ -67,6 +68,7 @@
     font-size: clamp(0.8rem, 1vw, 1rem);
     margin-bottom: 0px;
     font-weight: 100;
+    text-align: start;
 }
 
 .email, .phone, .address {

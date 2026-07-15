@@ -1,22 +1,80 @@
+﻿import { useEffect, useState } from 'react';
 import './navbar.css';
-import { Link } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleToggle = () => setOpen((current) => !current);
+  const handleClose = () => setOpen(false);
+
+  useEffect(() => {
+    if (location.pathname !== '/' || !location.hash) return;
+
+    const id = location.hash.replace('#', '');
+    const target = document.getElementById(id);
+
+    if (target) {
+      requestAnimationFrame(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  }, [location]);
+
+  const handleAnchorClick = (event, hash) => {
+    event.preventDefault();
+    handleClose();
+
+    if (location.pathname !== '/') {
+      navigate(`/${hash}`);
+      return;
+    }
+
+    const id = hash.replace('#', '');
+    const target = document.getElementById(id);
+
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.replaceState(null, '', hash);
+    } else {
+      window.location.hash = hash;
+    }
+  };
+
   return (
-    <nav className="navbar" aria-label="Navegação principal">
-      <div className="navbar__brand">
-        <Link to="/">
-          <img src={logo} alt="Logo do site" className="navbar__logo" />
-        </Link>
-      </div>
-      <div className="navbar__links">
-        <Link to="/#home">Início</Link>
-        <Link to="/#about">Sobre Nós</Link>
-        <Link to="/#models">Modelos</Link>
-        <Link to="/projetos">Projetos</Link>
-        <Link to="/#contact">Contacto</Link>
-      </div>
-    </nav>
+    <Grid container className="navbar" component="nav" aria-label="Navegação principal">
+      <Grid size={{ xs: 1, md: 1 }} />
+      <Grid item size={{ xs: 10, md: 10 }} className="navbar__inner">
+        <div className="navbar__brand">
+          <Link to="/" onClick={handleClose}>
+            <img src={logo} alt="Logo do site" className="navbar__logo" />
+          </Link>
+        </div>
+        <button
+          type="button"
+          className={`navbar__burger ${open ? 'is-open' : ''}`}
+          aria-controls="navbar-links"
+          aria-expanded={open}
+          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+          onClick={handleToggle}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <div id="navbar-links" className={`navbar__links ${open ? 'navbar__links--open' : ''}`}>
+          <Link to="#home" onClick={(event) => handleAnchorClick(event, '#home')}>Início</Link>
+          <Link to="#about" onClick={(event) => handleAnchorClick(event, '#about')}>Sobre Nós</Link>
+          <Link to="#models" onClick={(event) => handleAnchorClick(event, '#models')}>Modelos</Link>
+          <Link to="/projetos" onClick={handleClose}>Projetos</Link>
+          <Link to="#contact" onClick={(event) => handleAnchorClick(event, '#contact')}>Contacto</Link>
+        </div>
+      </Grid>
+      <Grid size={{ xs: 1, md: 1 }} />
+    </Grid>
   );
 }
