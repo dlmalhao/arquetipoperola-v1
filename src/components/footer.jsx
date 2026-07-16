@@ -1,9 +1,32 @@
 import './footer.css';
 import Grid from '@mui/material/Grid';
-import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export default function Footer() {
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+
+  const handleAnchorClick = (event, hash) => {
+    event.preventDefault();
+
+    if (location.pathname !== '/') {
+      navigate(`/${hash}`);
+      return;
+    }
+
+    const id = hash.replace('#', '');
+    const target = document.getElementById(id);
+
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.history.replaceState(null, '', hash);
+    } else {
+      window.location.hash = hash;
+    }
+  };
   return (
     <footer className="footer">
       <Grid container className="footer__grid">
@@ -15,11 +38,11 @@ export default function Footer() {
             </Link>
           </Grid>
           <Grid item size={{ xs: 12, md: 6 }} className="footer__links">
-            <a href="#">Início</a>
-            <a href="#">Sobre Nós</a>
-            <a href="#">Modelos</a>
-            <a href="#">Projetos</a>
-            <a href="#">Contacto</a>
+            <Link to="/">Início</Link>
+            <Link to="#about" onClick={(event) => handleAnchorClick(event, '#about')}>Sobre Nós</Link>
+            <Link to="#models" onClick={(event) => handleAnchorClick(event, '#models')}>Modelos</Link>
+            <Link to="/projetos">Projetos</Link>
+            <Link to="#contact" onClick={(event) => handleAnchorClick(event, '#contact')}>Contacto</Link>
             <p className="footer__copyright">© 2026 Arquetipo</p>
           </Grid>
         </Grid>

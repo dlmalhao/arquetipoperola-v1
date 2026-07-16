@@ -67,7 +67,7 @@ export default function Navbar() {
           <span />
         </button>
         <div id="navbar-links" className={`navbar__links ${open ? 'navbar__links--open' : ''}`}>
-          <Link to="#home" onClick={(event) => handleAnchorClick(event, '#home')}>Início</Link>
+          <Link to="/" onClick={handleClose}>Início</Link>
           <Link to="#about" onClick={(event) => handleAnchorClick(event, '#about')}>Sobre Nós</Link>
           <Link to="#models" onClick={(event) => handleAnchorClick(event, '#models')}>Modelos</Link>
           <Link to="/projetos" onClick={handleClose}>Projetos</Link>
