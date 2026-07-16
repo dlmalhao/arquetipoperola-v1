@@ -26,8 +26,8 @@ export default function Models() {
                 </div>
 
                 <Grid container spacing={5} className="models__grid">
-                  {latestmodels.map((model, index) => (
-                    <Grid data-aos="fade-in" data-aos-duration="3000" data-aos-delay={index * 200} key={model.id} item size={{ xs: 12, sm: 6, md: 4 }}>
+                  {latestmodels.map((model) => (
+                    <Grid data-aos="fade-in" data-aos-duration="2000" data-aos-delay="100" key={model.id} item size={{ xs: 12, sm: 6, md: 4 }}>
                         <Card name={model.name} type={model.type} image={model.image} />
                     </Grid>
                   ))}

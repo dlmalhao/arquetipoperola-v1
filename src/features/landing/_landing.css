@@ -93,3 +93,17 @@
         font-size: clamp(0.9rem, 3vw, 1rem);
     }
 }
+
+@media (max-width: 450px) {
+
+    .landing .text-component .description {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .landing .text-component button {
+        font-size: 12px;
+        width: 100%;
+    }
+}

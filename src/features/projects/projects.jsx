@@ -20,8 +20,8 @@ export default function Projects() {
                 </div>
 
                 <Grid container spacing={5} className="projects__grid">
-                  {latestProjects.map((project, index) => (
-                    <Grid data-aos="fade-in" data-aos-duration="3000" data-aos-delay={index * 200} key={project.id} item size={{ xs: 12, sm: 6, md: 4 }}>
+                  {latestProjects.map((project) => (
+                    <Grid data-aos="fade-in" data-aos-duration="2000" data-aos-delay="100" key={project.id} item size={{ xs: 12, sm: 6, md: 4 }}>
                         <Link to={`/projetos/${project.id}`} className="project-card__link">
                             <Card
                               name={project.name}

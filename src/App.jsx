@@ -20,7 +20,11 @@ function App() {
   }, []);
 
   return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <Box
+      sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
+      data-aos="fade-up"
+      data-aos-duration="900"
+    >
       <Navbar />
       <Box component="main" sx={{ flexGrow: 1 }}>
         <Routes>
