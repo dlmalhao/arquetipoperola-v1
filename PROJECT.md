@@ -1,6 +1,7 @@
 # ArquétipoPérola — Documentação do Projeto
 
 Este ficheiro é a fonte de verdade sobre as decisões de estrutura, modelo de dados e navegação do site.
+
 ## Stack
 
 - **Frontend:** React 19 + Vite
@@ -28,16 +29,16 @@ Estrutura principal reduzida a três secções, cada uma como página própria (
 | `/projetos?tipologia=t1` | Projetos filtrado | Filtro por tipologia via query param |
 | `/projetos?tipologia=t1&tipo=moradia` | Projetos filtrado | Filtro combinado |
 | `/contactos` | Contactos | Formulário / dados de contacto |
-
-**Por decidir:** se cada projeto vai ter página própria de detalhe (`/projetos/:slug`).
+| `/projetos/:slug` | Detalhe do projeto | Já existe no site atual |
 
 ## Filtros em "Projetos"
 
 - Dois `<select>` independentes: **Tipologia** e **Tipo de Projeto**.
 - Seleção única em cada um (não multi-select) — decisão tomada por ser um catálogo B2B pequeno, onde o utilizador normalmente sabe o que procura.
 - Cada select deve ter opção "Todas/Todos" para limpar o filtro.
-- Lógica: filtra por tipologia (se selecionada) E por tipo (se selecionado) — os dois filtros são completamente independentes entre si.
+- Lógica: filtra por tipologia (se selecionada) E por tipo (se selecionado) — os dois filtros são completamente independentes entre si. Como ambas as relações são N:N, um projeto aparece no filtro se tiver pelo menos uma tipologia/tipo que corresponda ao valor selecionado.
 - Precisa de estado vazio tratado (combinação sem resultados).
+- O número de tipologias, tipos de projeto e outros filtros que venham a existir não é fixo — o cliente quer o máximo de poder de customização, ou seja, tudo isto deve poder ser gerido/expandido no Strapi sem alterações ao código do frontend.
 
 ## Modelo de dados (Strapi)
 
@@ -51,7 +52,7 @@ Estrutura principal reduzida a três secções, cada uma como página própria (
 - `id`
 - `nome` (ex: Moradia, Apartamento, Duplex — definido livremente pelo administrador)
 - `descrição` (opcional)
-- `projetos` → relação com Projeto (cardinalidade a confirmar — ver "Pontos em aberto")
+- `projetos` → relação **N:N** com Projeto (confirmado: um projeto pode ter mais do que um tipo)
 
 ### Projeto
 **Identificação**
@@ -71,9 +72,17 @@ Estrutura principal reduzida a três secções, cada uma como página própria (
 
 **Relações**
 - `tipologias` → Tipologia[] (N:N — confirmado com o cliente: um projeto residencial pode ter várias casas de tipologias diferentes)
-- `tipo` → Tipo de Projeto (cardinalidade a confirmar)
+- `tipos` → Tipo de Projeto[] (N:N — confirmado: um projeto pode ter mais do que um tipo)
+
+> `descrição` é obrigatória para todos os projetos (confirmado com o cliente).
 
 > Nota: ficaram de fora do modelo os campos do grupo "Outros" (arquiteto responsável, destaque, preço) — por pedido explícito, não foram incluídos nesta fase.
+
+### Parceiro
+- `id`
+- `nome`
+- `logótipo`
+- Usado na página Sobre, junto com a bio do fundador.
 
 ## Conteúdo de referência (do PDF do cliente)
 
@@ -81,13 +90,9 @@ O cliente enviou um portefólio em PDF com o formato habitual que usa para apres
 
 - **Projetos Realizados** — têm descrição detalhada (contexto, área, características). Exemplos: Liberdade Street Fashion (Braga), Trofa Saúde Hospital (Braga Sul), Moov Hotel Porto Centro, Hotel TRYP Lisboa Aeroporto, Santa Luzia ArtHotel (Guimarães), lojas Continente/Minipreço/Pingo Doce, Burger King, Norauto.
 - **Projetos em Execução** — só têm nome do cliente/marca e cidade, sem descrição detalhada. Confirmar com o cliente se isto é propositado (campo `descrição` pode não ser obrigatório).
-- **Secção "Parceiros"** — logótipos de empresas parceiras (Omatapalo, A. Pimenta Construções, Grupo Isidoro, Quantico, Hoti Hoteis, Astiazaran Arquitectos, Finangeste). **Não está prevista na estrutura atual do site** — confirmar com o cliente se deve entrar (provavelmente como secção em "Sobre" ou bloco na home). Se sim, precisa de nova entidade `Parceiro` (nome, logótipo).
-- **Bio do fundador** (Rui Jorge Silva Anjo) — encaixa em "Sobre".
+- **Secção "Parceiros"** — logótipos de empresas parceiras (Omatapalo, A. Pimenta Construções, Grupo Isidoro, Quantico, Hoti Hoteis, Astiazaran Arquitectos, Finangeste). Confirmado: entra na página **Sobre**. Precisa de nova entidade `Parceiro` (nome, logótipo).
+- **Bio do fundador** (Rui Jorge Silva Anjo) — confirmado: entra na página **Sobre**, junto com os Parceiros.
 
 ## Pontos em aberto
 
-- [ ] Confirmar cardinalidade Projeto ↔ Tipo de Projeto (um único tipo por projeto, ou também pode ter vários?)
-- [ ] Confirmar se "Parceiros" entra no site e onde
-- [ ] Confirmar se `descrição` é obrigatória para todos os projetos (discrepância entre "Realizados" e "Em Execução" no PDF)
-- [ ] Confirmar se projetos vão ter página de detalhe própria (`/projetos/:slug`)
-- [ ] Confirmar número real de tipologias e tipos de projeto que o cliente vai usar
+Nenhum, por agora — todas as questões anteriores foram confirmadas com o cliente (ver secções acima). O princípio geral acordado: tipologias, tipos de projeto e outros filtros futuros não têm número fixo — devem poder ser geridos livremente no Strapi, dando ao cliente o máximo de poder de customização sem depender de alterações ao código.
