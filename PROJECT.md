@@ -1,7 +1,6 @@
 # ArquétipoPérola — Documentação do Projeto
 
-Este ficheiro é a fonte de verdade sobre as decisões de estrutura, modelo de dados e navegação do site. Mantém atualizado à medida que forem tomadas novas decisões com o cliente.
-
+Este ficheiro é a fonte de verdade sobre as decisões de estrutura, modelo de dados e navegação do site.
 ## Stack
 
 - **Frontend:** React 19 + Vite
