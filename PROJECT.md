@@ -93,6 +93,11 @@ O cliente enviou um portefólio em PDF com o formato habitual que usa para apres
 - **Secção "Parceiros"** — logótipos de empresas parceiras (Omatapalo, A. Pimenta Construções, Grupo Isidoro, Quantico, Hoti Hoteis, Astiazaran Arquitectos, Finangeste). Confirmado: entra na página **Sobre**. Precisa de nova entidade `Parceiro` (nome, logótipo).
 - **Bio do fundador** (Rui Jorge Silva Anjo) — confirmado: entra na página **Sobre**, junto com os Parceiros.
 
+## Diretrizes de design e código
+ 
+- **Design visual:** manter próximo do que já está implementado — não é suposto o resultado final fugir muito à aparência atual do site. Alterações pontuais são aceitáveis quando servem a nova estrutura (ex: layout de páginas novas que não existiam, como Projetos com filtros), mas não uma redesign geral.
+- **Código existente:** há liberdade para refatorar/melhorar o código já implementado sempre que fizer sentido (performance, organização, manutenibilidade), mesmo fora do que for estritamente necessário para as novas funcionalidades.
+
 ## Pontos em aberto
 
 Nenhum, por agora — todas as questões anteriores foram confirmadas com o cliente (ver secções acima). O princípio geral acordado: tipologias, tipos de projeto e outros filtros futuros não têm número fixo — devem poder ser geridos livremente no Strapi, dando ao cliente o máximo de poder de customização sem depender de alterações ao código.
