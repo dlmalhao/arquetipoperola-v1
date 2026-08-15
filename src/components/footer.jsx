@@ -40,7 +40,6 @@ export default function Footer() {
           <Grid item size={{ xs: 12, md: 6 }} className="footer__links">
             <Link to="/">Início</Link>
             <Link to="#about" onClick={(event) => handleAnchorClick(event, '#about')}>Sobre Nós</Link>
-            <Link to="#models" onClick={(event) => handleAnchorClick(event, '#models')}>Modelos</Link>
             <Link to="/projetos">Projetos</Link>
             <Link to="#contact" onClick={(event) => handleAnchorClick(event, '#contact')}>Contacto</Link>
             <p className="footer__copyright">© 2026 Arquetipo</p>

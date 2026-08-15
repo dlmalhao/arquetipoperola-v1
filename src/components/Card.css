@@ -4,7 +4,7 @@
   background: var(--color-dark-background);
   border-radius: 6px;
   overflow: hidden;
-  min-height: 320px;
+  min-height: 255px;
 }
 
 .card-component__image {

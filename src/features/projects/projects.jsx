@@ -22,10 +22,10 @@ export default function Projects() {
                 <Grid container spacing={5} className="projects__grid">
                   {latestProjects.map((project) => (
                     <Grid data-aos="fade-in" data-aos-duration="2000" data-aos-delay="100" key={project.id} item size={{ xs: 12, sm: 6, md: 4 }}>
-                        <Link to={`/projetos/${project.id}`} className="project-card__link">
+                        <Link to={`/projetos/${project.slug}`} className="project-card__link">
                             <Card
                               name={project.name}
-                              type={project.type}
+                              type={project.typeLabel}
                               image={project.images?.[0]}
                             />
                         </Link>

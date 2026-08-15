@@ -1,6 +1,7 @@
 import './_landing.css';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import { Link } from 'react-router-dom';
 
 export default function Landing() {
   return (
@@ -14,8 +15,8 @@ export default function Landing() {
               <h3>Projetamos e construímos casas <span className="highlight">modulares</span> de alta <span className="highlight">performance</span> com custos rigidamente controlados.</h3>
               <h3>Arquitetura <span className="highlight">inteligente</span>, produzida dentro de portas e entregue <span className="highlight">pronta a habitar</span>.</h3>
             </div>
-            <Button variant="contained" data-aos="fade-in" data-aos-duration="2000" data-aos-delay="300">
-              Ver Modelos e Tipologias
+            <Button component={Link} to="/projetos" variant="contained" data-aos="fade-in" data-aos-duration="2000" data-aos-delay="300">
+              Ver projetos
             </Button>
           </div>
         </Grid>

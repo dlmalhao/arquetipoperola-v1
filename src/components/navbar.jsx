@@ -1,13 +1,12 @@
 ﻿import { useEffect, useState } from 'react';
 import './navbar.css';
 import Grid from '@mui/material/Grid';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   const handleToggle = () => setOpen((current) => !current);
   const handleClose = () => setOpen(false);
@@ -25,25 +24,25 @@ export default function Navbar() {
     }
   }, [location]);
 
-  const handleAnchorClick = (event, hash) => {
-    event.preventDefault();
-    handleClose();
+  // const handleAnchorClick = (event, hash) => {
+  //   event.preventDefault();
+  //   handleClose();
 
-    if (location.pathname !== '/') {
-      navigate(`/${hash}`);
-      return;
-    }
+  //   if (location.pathname !== '/') {
+  //     navigate(`/${hash}`);
+  //     return;
+  //   }
 
-    const id = hash.replace('#', '');
-    const target = document.getElementById(id);
+  //   const id = hash.replace('#', '');
+  //   const target = document.getElementById(id);
 
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      window.history.replaceState(null, '', hash);
-    } else {
-      window.location.hash = hash;
-    }
-  };
+  //   if (target) {
+  //     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //     window.history.replaceState(null, '', hash);
+  //   } else {
+  //     window.location.hash = hash;
+  //   }
+  // };
 
   return (
     <Grid container className="navbar" component="nav" aria-label="Navegação principal">
@@ -67,11 +66,10 @@ export default function Navbar() {
           <span />
         </button>
         <div id="navbar-links" className={`navbar__links ${open ? 'navbar__links--open' : ''}`}>
-          <Link to="/" onClick={handleClose}>Início</Link>
-          <Link to="#about" onClick={(event) => handleAnchorClick(event, '#about')}>Sobre Nós</Link>
-          <Link to="#models" onClick={(event) => handleAnchorClick(event, '#models')}>Modelos</Link>
-          <Link to="/projetos" onClick={handleClose}>Projetos</Link>
-          <Link to="#contact" onClick={(event) => handleAnchorClick(event, '#contact')}>Contacto</Link>
+          <NavLink to="/" end onClick={handleClose}>Início</NavLink>
+          <NavLink to="/sobre" onClick={handleClose}>Sobre Nós</NavLink>
+          <NavLink to="/projetos" onClick={handleClose}>Projetos</NavLink>
+          <NavLink to="/contactos" onClick={handleClose}>Contacto</NavLink>
         </div>
       </Grid>
       <Grid size={{ xs: 1, md: 1 }} />

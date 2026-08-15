@@ -50,11 +50,11 @@
     color: var(--color-white);
 }
 
-.landing .text-component button {
-    width: fit-content;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
+.landing .text-component .MuiButton-root {
+    width: 270px;
+    font-size: 16px;
+    padding: 10px 20px;
+    font-weight: bold;
     text-transform: uppercase;
     color: var(--color-dark-background);
     background-color: var(--color-white);
@@ -64,7 +64,7 @@
     transition: background-color 0.3s ease;
 }
 
-.landing .text-component button:hover {
+.landing .text-component .MuiButton-root:hover {
     background-color: var(--color-hover);
 }
 
